@@ -1,0 +1,52 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Ticket {
+  id          String     @id @default(cuid())
+  driverName  String
+  companyName String
+  chemical    String
+  valid       validation @default(PENDING)
+  Job         Job[]
+}
+
+model Job {
+  id              String    @id @default(cuid())
+  ticketId        String
+  storageLocation String
+  date            DateTime  @default(now())
+  status          String    @default("pending")
+  jobType         JobType
+  jobStatus       JobStatus @default(PENDING)
+  Ticket          Ticket    @relation(fields: [ticketId], references: [id])
+}
+
+enum validation {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum JobType {
+  COLLECTION
+  DELIVERY
+}
+
+enum JobStatus {
+  PENDING
+  IN_PROGRESS
+  PAUSED
+  COMPLETED
+}
