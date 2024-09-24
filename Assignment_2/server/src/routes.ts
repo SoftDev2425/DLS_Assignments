@@ -3,7 +3,7 @@ import UsersRouter from "./routes/users.routes";
 import TaskRouter from "./routes/tickets.routes";
 import JobRouter from "./routes/jobs.routes";
 
-import path from "path";
+// import path from "path";
 
 function routes(app: Express) {
   //   const assignmentNumber = path.basename(process.cwd()).split("_")[1];
