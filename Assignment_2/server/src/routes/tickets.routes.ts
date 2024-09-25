@@ -5,8 +5,8 @@ const router = express.Router();
 
 router.get("/", ticketsController.handleGetTickets);
 router.get("/:id", ticketsController.handleGetTicketById);
-router.post("/create-ticket", ticketsController.handleCreateTicket);
-router.post("/validate-ticket", ticketsController.handleValidateTicket);
+router.post("/", ticketsController.handleCreateTicket);
+router.post("/validate", ticketsController.handleValidateTicket);
 router.put("/:id", ticketsController.handleUpdateTicket);
 
 export default router;
