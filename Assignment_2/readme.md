@@ -86,7 +86,7 @@ Start by cloning the folder 'Assignment_2'.
 1. `cd` into the `server` folder
 2. Run `npm i`
 3. Now run your docker desktop.
-4. Then run the following command in your terminal (make sure you are in /server):
+4. Then run the following command in your terminal (make sure you are in /server) to run a postgres container:
    `docker-compose up -d` <br>
 5. Create an `.env` with the following content:
 
